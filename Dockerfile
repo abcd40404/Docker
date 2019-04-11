@@ -11,8 +11,7 @@ RUN apt install -y vim && \
     apt install -y wget && \
     apt install -y tmux
 
-RUN apt autoremove -y && \
-    apt autoclean -y
+RUN apt autoremove
 
 USER roger
 WORKDIR /home/roger
