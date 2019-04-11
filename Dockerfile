@@ -2,10 +2,11 @@ FROM ubuntu:trusty
 MAINTAINER abcd40404<abcd40404@gmail.com>
 
 RUN useradd -m -s /bin/bash roger && \
-    usermod -aG sudo roger
+    usermod -aG sudo roger && \
+    echo 'roger:roger' | chpasswd
 
 WORKDIR /home/roger
-ADD https://github.com/abcd40404/Docker/blob/master/.vimrc /home/roger
+ADD https://raw.githubusercontent.com/abcd40404/Docker/master/.vimrc /home/roger
 
 RUN apt update
     
