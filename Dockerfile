@@ -9,10 +9,11 @@ RUN apt install -y python-dev python-pip
 
 RUN apt install -y vim && \
     apt install -y wget && \
-    apt install -y tmux \
+    apt install -y tmux
 
 RUN apt autoremove -y && \
     apt autoclean -y \
 
 USER roger
 WORKDIR /home/roger
+ADD https://github.com/abcd40404/Docker/blob/master/.vimrc /home/roger
