@@ -4,6 +4,9 @@ MAINTAINER abcd40404<abcd40404@gmail.com>
 RUN useradd -m -s /bin/bash roger && \
     usermod -aG sudo roger
 
+WORKDIR /home/roger
+ADD https://github.com/abcd40404/Docker/blob/master/.vimrc /home/roger
+
 RUN apt update
     
 RUN apt install -y python-dev python-pip
@@ -20,5 +23,3 @@ RUN apt install -y wget && \
 
 
 USER roger
-WORKDIR /home/roger
-ADD https://github.com/abcd40404/Docker/blob/master/.vimrc /home/roger
