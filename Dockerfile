@@ -9,7 +9,7 @@ RUN apt update
 RUN apt install -y python-dev python-pip
 
 RUN apt install -y vim && \
-    apt install git curl && \
+    apt install -y git curl && \
     git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle && \
     mkdir .fonts/ && cd .fonts/ && \
     git clone https://github.com/Lokaltog/powerline-fonts.git && \
