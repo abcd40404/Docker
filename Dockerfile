@@ -10,7 +10,7 @@ RUN apt update
     
 RUN apt install -y python-dev python-pip
 
-RUN apt install -y vim git curl wget ssh tmux htop
+RUN apt install -y vim git curl wget ssh tmux htop locate
 
 
 USER roger
@@ -20,14 +20,14 @@ ADD https://raw.githubusercontent.com/abcd40404/Docker/master/.vimrc /home/roger
 USER root
 RUN sudo chmod 664 .vimrc
 USER roger
-RUN git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/ && \
-    git clone https://github.com/chriskempson/tomorrow-theme.git ~./.vim/bundle/ && \
+RUN git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim && \
+    git clone https://github.com/chriskempson/tomorrow-theme.git ~/.vim/bundle/tomorrow-theme && \
     mkdir .fonts/ && cd .fonts/ && \
     git clone https://github.com/Lokaltog/powerline-fonts.git && \
     cd powerline-fonts/ && ./install.sh
 
-RUN pip install --user powerline-statup install --user powerline-status
-RUN cd ~ && echo 'POWERLINE_SCRIPT=/usr/share/powerline/bindings/bash/powerline.sh \
-            if [ -f $POWERLINE_SCRIPT ]; then \
-                source $POWERLINE_SCRIPT \
-            fi' >> .bashrc 
+RUN pip install --user powerline-status
+RUN cd ~ && echo \
+'if [ -f ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh ]; then\n \
+    source ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh\n \ 
+fi' >> .bashrc
