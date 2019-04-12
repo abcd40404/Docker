@@ -17,7 +17,9 @@ USER roger
 WORKDIR /home/roger
 
 ADD https://raw.githubusercontent.com/abcd40404/Docker/master/.vimrc /home/roger
-RUN chmod 664 .vimrc
+USER root
+RUN sudo chmod 664 .vimrc
+USER roger
 RUN git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/ && \
     git clone https://github.com/chriskempson/tomorrow-theme.git ~./.vim/bundle/ && \
     mkdir .fonts/ && cd .fonts/ && \
