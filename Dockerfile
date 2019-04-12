@@ -17,7 +17,15 @@ USER roger
 WORKDIR /home/roger
 
 ADD https://raw.githubusercontent.com/abcd40404/Docker/master/.vimrc /home/roger
-RUN git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle && \
+RUN chmod 664 .vimrc
+RUN git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/ && \
+    git clone https://github.com/chriskempson/tomorrow-theme.git ~./.vim/bundle/ && \
     mkdir .fonts/ && cd .fonts/ && \
     git clone https://github.com/Lokaltog/powerline-fonts.git && \
     cd powerline-fonts/ && ./install.sh
+
+RUN pip install --user powerline-statup install --user powerline-status
+RUN cd ~ && echo 'POWERLINE_SCRIPT=/usr/share/powerline/bindings/bash/powerline.sh \
+            if [ -f $POWERLINE_SCRIPT ]; then \
+                source $POWERLINE_SCRIPT \
+            fi' >> .bashrc 
