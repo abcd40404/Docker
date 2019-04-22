@@ -15,10 +15,8 @@ Plugin 'vim-airline/vim-airline-themes'
 " vim color scheme
 " Plugin 'morhetz/gruvbox' (another theme)
 Plugin 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
-" NERDTree
-Plugin 'scrooloose/nerdtree'
-" 搜尋文件
-Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/nerdtree' " NERDTree
+Plugin 'kien/ctrlp.vim' " 搜尋文件
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -35,26 +33,28 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 " -----------------------------------------------------
-set encoding=utf-8
-set laststatus=2
-set t_Co=256
-" Set Airline
-" -----------------------------------------------------
+" Theme
+colorscheme Tomorrow-Night
+syntax enable
 let g:airline_powerline_fonts = 1 " enable powerline font
 "let g:airline_theme='bubblegum'
 "let g:airline_solarized_bg='dark'
 " -----------------------------------------------------
-colorscheme Tomorrow-Night
-syntax enable
-set nu " show lines
-set mouse=a " enable mouse
+" Edit
+set encoding=utf-8
+set laststatus=2
+set t_Co=256
+set number " 顯示行號
+"set mouse=a " 啟用滑鼠
 set clipboard=unnamed
 set tabstop=4
 set shiftwidth=4
 set expandtab
-
+set cursorline
+set smartcase " 智慧搜尋
+" -----------------------------------------------------
+" Key mapping
 nmap <F5> :NERDTreeToggle<cr>
-
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 0
